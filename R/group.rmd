@@ -11,7 +11,8 @@ output: pdf_document
 ## Input data
 ```{r, message=FALSE}
 ## setting working directory
-setwd("C:/git/Analysis Class/Problem_Sets/MidtermExam/R")
+setwd("C:/git/statsGroupProject/R")
 ## input data
-load("foxnews.RData")
+load("ces.RData")
 ```
+
