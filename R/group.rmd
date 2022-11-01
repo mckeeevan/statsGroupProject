@@ -12,14 +12,21 @@ output: pdf_document
 setwd("C:/git/statsGroupProject/R")
 ## input data
 load("ces.RData")
+
+library(ggplot2)
 ```
 
 
-## Variables to fact
+## Variables to factor
 ```{r, message=FALSE}
+
+
 
 ## input data
 load("ces.RData")
+
+ces$polengage <- ces$voted + ces$meeting + ces$sign + ces$campaign + ces$protest + ces$contact + ces$donate
+
 
 ## Region
 ces$region <- factor(ces$region,
@@ -76,6 +83,30 @@ ces$religious <- factor(ces$religious,
 )
 
 ces[1:4, ]
+```
+
+
+
+## Histogram
+```{r}
+
+
+ggplot(ces, aes(polengage)) +
+  geom_histogram(color = "#a8a8a8", fill = "#000000", binwidth = 1) +
+  labs(
+    title = "Distribution of Political Engagment",
+    ## caption = "Source: Gapminder dataset",
+    x = "Political Activities",
+    y = "Count"
+  ) +
+  theme_classic() +
+  theme(
+    plot.title = element_text(color = "#0099F8", size = 16, face = "bold"),
+    plot.subtitle = element_text(size = 10, face = "bold"),
+    plot.caption = element_text(face = "italic")
+  )
+
+
 ```
 
 
