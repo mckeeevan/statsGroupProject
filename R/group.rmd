@@ -6,8 +6,6 @@ output: pdf_document
 ---
 
 
-
-
 ## Input data
 ```{r, message=FALSE}
 ## setting working directory
@@ -15,4 +13,69 @@ setwd("C:/git/statsGroupProject/R")
 ## input data
 load("ces.RData")
 ```
+
+
+## Variables to fact
+```{r, message=FALSE}
+
+## input data
+load("ces.RData")
+
+## Region
+ces$region <- factor(ces$region,
+    levels = 1:4,
+    labels = c("Northeast", "Midwest", "South", "West")
+)
+
+## Gender
+ces$gender <- factor(ces$gender,
+    levels = 1:2,
+    labels = c("Male", "Female")
+)
+
+## Education
+ces$educ <- factor(ces$educ,
+    levels = 1:6,
+    labels = c("No HS", "High School Graduate", "Some college", "2-year degree", "4-year degree", "Post-grad")
+)
+
+## Race
+ces$race <- factor(ces$race,
+    levels = 1:8,
+    labels = c("White", "Black", "Hispanic", "Asian", "Native American", "Middle Eastern", "Two or more races", "Other")
+)
+
+## Hispanic
+ces$hispanic <- factor(ces$hispanic,
+    levels = 1:2,
+    labels = c("Yes", "No")
+)
+
+## Homeowner
+ces$ownhome <- factor(ces$ownhome,
+    levels = 1:3,
+    labels = c("Own", "Rent", "Other")
+)
+
+## Neighborhood Type
+ces$urbancity <- factor(ces$urbancity,
+    levels = 1:5,
+    labels = c("City", "Suburb", "Town", "Rural Area", "Other")
+)
+
+## Union
+ces$unionhh <- factor(ces$unionhh,
+    levels = 1:2,
+    labels = c("Yes", "No")
+)
+
+## Religious
+ces$religious <- factor(ces$religious,
+    levels = 1:4,
+    labels = c("Very important", "Not too important", "Not too important", "Not at all important")
+)
+
+ces[1:4, ]
+```
+
 
