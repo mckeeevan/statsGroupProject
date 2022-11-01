@@ -1,0 +1,17 @@
+---
+title: "Midterm Exam"
+author: "Evan McKee"
+date: "10/20/2022"
+output: pdf_document
+---
+
+
+
+
+## Input data
+```{r, message=FALSE}
+## setting working directory
+setwd("C:/git/Analysis Class/Problem_Sets/MidtermExam/R")
+## input data
+load("foxnews.RData")
+```
