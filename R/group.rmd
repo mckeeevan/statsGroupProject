@@ -1,7 +1,7 @@
 ---
-title: "Midterm Exam"
-author: "Evan McKee"
-date: "10/20/2022"
+title: "Group Project"
+author: "Evan McKee, Roman, etc."
+date: "12/06/2022"
 output: pdf_document
 ---
 
