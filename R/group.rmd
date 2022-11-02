@@ -21,10 +21,6 @@ library(ggplot2)
 ```{r, message=FALSE}
 
 
-
-## input data
-load("ces.RData")
-
 ces$polengage <- ces$voted + ces$meeting + ces$sign +
     ces$campaign + ces$protest + ces$contact + ces$donate
 
