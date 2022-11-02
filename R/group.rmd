@@ -25,7 +25,8 @@ library(ggplot2)
 ## input data
 load("ces.RData")
 
-ces$polengage <- ces$voted + ces$meeting + ces$sign + ces$campaign + ces$protest + ces$contact + ces$donate
+ces$polengage <- ces$voted + ces$meeting + ces$sign +
+    ces$campaign + ces$protest + ces$contact + ces$donate
 
 
 ## Region
@@ -43,13 +44,19 @@ ces$gender <- factor(ces$gender,
 ## Education
 ces$educ <- factor(ces$educ,
     levels = 1:6,
-    labels = c("No HS", "High School Graduate", "Some college", "2-year degree", "4-year degree", "Post-grad")
+    labels = c(
+        "No HS", "High School Graduate", "Some college",
+        "2-year degree", "4-year degree", "Post-grad"
+    )
 )
 
 ## Race
 ces$race <- factor(ces$race,
     levels = 1:8,
-    labels = c("White", "Black", "Hispanic", "Asian", "Native American", "Middle Eastern", "Two or more races", "Other")
+    labels = c(
+        "White", "Black", "Hispanic", "Asian",
+        "Native American", "Middle Eastern", "Two or more races", "Other"
+    )
 )
 
 ## Hispanic
@@ -79,16 +86,23 @@ ces$unionhh <- factor(ces$unionhh,
 ## Religious
 ces$religious <- factor(ces$religious,
     levels = 1:4,
-    labels = c("Very important", "Not too important", "Not too important", "Not at all important")
+    labels = c(
+        "Very important", "Not too important",
+        "Not too important", "Not at all important"
+    )
 )
 
 ## Family income
 ces$faminc <- factor(ces$faminc,
     levels = 1:16,
-    labels = c("< 10,000", "10,000 - 19,999", "20,000 - 29,999", "30,000 - 39,999",
- "40,000 - 49,999", "50,000 - 59,999", "60,000 - 69,999", "70,000 - 79,999",
-      "80,000 - 99,999","100,000-119,000","120,000 - 149,999", "150,000 - 199,999",
-    "200,000 - 249,999", "250,000 - 349,999", "350,000 - 499,999", "500,000 or more")
+    labels = c(
+        "< 10,000", "10,000 - 19,999", "20,000 - 29,999",
+        "30,000 - 39,999", "40,000 - 49,999",
+        "50,000 - 59,999", "60,000 - 69,999", "70,000 - 79,999",
+        "80,000 - 99,999", "100,000-119,000", "120,000 - 149,999",
+        "150,000 - 199,999", "200,000 - 249,999", "250,000 - 349,999",
+        "350,000 - 499,999", "500,000 or more"
+    )
 )
 
 ## Voted
@@ -136,19 +150,29 @@ ces$donate <- factor(ces$donate,
 ## ideo5
 ces$ideo5 <- factor(ces$ideo5,
     levels = 1:5,
-    labels = c("Very liberal", "Liberal", "Moderate", "Conservative","Very Conservative")
+    labels = c(
+        "Very liberal", "Liberal", "Moderate",
+        "Conservative", "Very Conservative"
+    )
 )
 
 ## pid3
 ces$pid3 <- factor(ces$pid3,
     levels = 1:5,
-    labels = c("Democrat","Republican","Independent","Other","Not Sure")
+    labels = c(
+        "Democrat", "Republican", "Independent",
+        "Other", "Not Sure"
+    )
 )
 
 ## pid7
 ces$pid7 <- factor(ces$pid7,
     levels = 1:7,
-    labels = c("Strong Democrat", "Not very strong Democrat", "Lean Democract", "Independent", "Lean Republican", "Not very strong Republican", "Strong Republican")
+    labels = c(
+        "Strong Democrat", "Not very strong Democrat",
+        "Lean Democract", "Independent", "Lean Republican",
+        "Not very strong Republican", "Strong Republican"
+    )
 )
 
 ## medicare
@@ -220,21 +244,19 @@ ces[1:2, ]
 
 
 ggplot(ces, aes(polengage)) +
-  geom_histogram(color = "#a8a8a8", fill = "#000000", binwidth = 1) +
-  labs(
-    title = "Distribution of Political Engagment",
-    ## caption = "Source: Gapminder dataset",
-    x = "Political Activities",
-    y = "Count"
-  ) +
-  theme_classic() +
-  theme(
-    plot.title = element_text(color = "#0099F8", size = 16, face = "bold"),
-    plot.subtitle = element_text(size = 10, face = "bold"),
-    plot.caption = element_text(face = "italic")
-  )
-
-
+    geom_histogram(color = "#a8a8a8", fill = "#000000", binwidth = 1) +
+    labs(
+        title = "Distribution of Political Engagment",
+        ## caption = "Source: Gapminder dataset",
+        x = "Political Activities",
+        y = "Count"
+    ) +
+    theme_classic() +
+    theme(
+        plot.title = element_text(color = "#0099F8", size = 16, face = "bold"),
+        plot.subtitle = element_text(size = 10, face = "bold"),
+        plot.caption = element_text(face = "italic")
+    )
 ```
 
 
