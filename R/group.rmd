@@ -82,7 +82,135 @@ ces$religious <- factor(ces$religious,
     labels = c("Very important", "Not too important", "Not too important", "Not at all important")
 )
 
-ces[1:4, ]
+## Family income
+ces$faminc <- factor(ces$faminc,
+    levels = 1:16,
+    labels = c("< 10,000", "10,000 - 19,999", "20,000 - 29,999", "30,000 - 39,999",
+ "40,000 - 49,999", "50,000 - 59,999", "60,000 - 69,999", "70,000 - 79,999",
+      "80,000 - 99,999","100,000-119,000","120,000 - 149,999", "150,000 - 199,999",
+    "200,000 - 249,999", "250,000 - 349,999", "350,000 - 499,999", "500,000 or more")
+)
+
+## Voted
+ces$voted <- factor(ces$voted,
+    levels = 1:2,
+    labels = c("Yes", "No")
+)
+
+## Meeting
+ces$meeting <- factor(ces$meeting,
+    levels = 1:2,
+    labels = c("Yes", "No")
+)
+
+## Signed
+ces$sign <- factor(ces$sign,
+    levels = 1:2,
+    labels = c("Yes", "No")
+)
+
+## Campaign
+ces$campaign <- factor(ces$campaign,
+    levels = 1:2,
+    labels = c("Yes", "No")
+)
+
+## Protest
+ces$protest <- factor(ces$protest,
+    levels = 1:2,
+    labels = c("Yes", "No")
+)
+
+## Contact
+ces$contact <- factor(ces$contact,
+    levels = 1:2,
+    labels = c("Yes", "No")
+)
+
+## Donate
+ces$donate <- factor(ces$donate,
+    levels = 1:2,
+    labels = c("Yes", "No")
+)
+
+## ideo5
+ces$ideo5 <- factor(ces$ideo5,
+    levels = 1:5,
+    labels = c("Very liberal", "Liberal", "Moderate", "Conservative","Very Conservative")
+)
+
+## pid3
+ces$pid3 <- factor(ces$pid3,
+    levels = 1:5,
+    labels = c("Democrat","Republican","Independent","Other","Not Sure")
+)
+
+## pid7
+ces$pid7 <- factor(ces$pid7,
+    levels = 1:7,
+    labels = c("Strong Democrat", "Not very strong Democrat", "Lean Democract", "Independent", "Lean Republican", "Not very strong Republican", "Strong Republican")
+)
+
+## medicare
+ces$medicare <- factor(ces$medicare,
+    levels = 1:2,
+    labels = c("Support", "Oppose")
+)
+
+## ACA
+ces$ACA <- factor(ces$ACA,
+    levels = 1:2,
+    labels = c("Support", "Oppose")
+)
+
+## abortion
+ces$abortion <- factor(ces$abortion,
+    levels = 1:2,
+    labels = c("Support", "Oppose")
+)
+
+## EPA
+ces$EPA <- factor(ces$EPA,
+    levels = 1:2,
+    labels = c("Support", "Oppose")
+)
+
+## Increase the number of police
+ces$police_incr <- factor(ces$police_incr,
+    levels = 1:2,
+    labels = c("Support", "Oppose")
+)
+
+## Decrease the number of police
+ces$police_decr <- factor(ces$police_decr,
+    levels = 1:2,
+    labels = c("Support", "Oppose")
+)
+
+## Trade Tariffs
+ces$trade <- factor(ces$trade,
+    levels = 1:2,
+    labels = c("Support", "Oppose")
+)
+
+## Raise minimum wage
+ces$minwage <- factor(ces$minwage,
+    levels = 1:2,
+    labels = c("Support", "Oppose")
+)
+
+## Work requirement for food stamps
+ces$work_req <- factor(ces$work_req,
+    levels = 1:2,
+    labels = c("Support", "Oppose")
+)
+
+
+
+
+
+
+ces[1:2, ]
 ```
 
 
