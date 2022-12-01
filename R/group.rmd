@@ -254,6 +254,8 @@ ggplot(ces, aes(polengage)) +
         plot.caption = element_text(face = "italic")
     )
 ```
+
+```{r}
 ###Question 2 pt 1
 ## Education
 Lm_educ <- lm(polengage ~ educ, data = ces)
@@ -317,3 +319,6 @@ summary (Lm_abort)
 
 Lm_min <- lm(minwage ~ polengage, data=ces)
 Lm_min
+
+
+```
