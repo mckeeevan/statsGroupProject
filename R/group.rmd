@@ -1,6 +1,6 @@
 ---
 title: "Group Project"
-author: "Evan McKee, Roman, etc."
+author: "Evan McKee, Roman, Jordan"
 date: "12/06/2022"
 output: pdf_document
 ---
