@@ -20,6 +20,8 @@ library(ggplot2)
 ## Variables to factor
 ```{r, message=FALSE}
 
+data <- load("ces.RData")
+
 
 ces$polengage <- ces$voted + ces$meeting + ces$sign +
     ces$campaign + ces$protest + ces$contact + ces$donate
@@ -89,7 +91,7 @@ ces$religious <- factor(ces$religious,
 )
 
 ## Family income
-ces$faminc <- factor(ces$faminc,
+ces$faminc2 <- factor(ces$faminc,
     levels = 1:16,
     labels = c(
         "< 10,000", "10,000 - 19,999", "20,000 - 29,999",
@@ -256,3 +258,13 @@ ggplot(ces, aes(polengage)) +
 ```
 
 
+
+## Part 2
+
+```{r}
+
+
+cor(ces$faminc, ces$polengage, use = "complete.obs")
+
+
+```
