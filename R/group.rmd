@@ -1,6 +1,6 @@
 ---
 title: "Group Project"
-author: "Evan McKee, Roman, etc."
+author: "Evan McKee, Roman, Jordan"
 date: "12/06/2022"
 output: pdf_document
 ---
@@ -257,7 +257,44 @@ ggplot(ces, aes(polengage)) +
     )
 ```
 
+```{r}
+###Question 2 pt 1
+## Education
+Lm_educ <- lm(polengage ~ educ, data = ces)
+Lm_educ
 
+
+###Question 2 pt 2
+ces$faminc <- (ifelse(ces$faminc == 2 | ces$faminc == 3, 2, ces$faminc))
+ces$faminc <- (ifelse(ces$faminc == 4 | ces$faminc == 5, 3, ces$faminc))
+ces$faminc <- (ifelse(ces$faminc == 6 | ces$faminc == 7, 4, ces$faminc))
+ces$faminc <- (ifelse(ces$faminc == 8 | ces$faminc == 9, 5, ces$faminc))
+ces$faminc <- (ifelse(ces$faminc == 10 | ces$faminc == 11, 6, ces$faminc))
+ces$faminc <- (ifelse(ces$faminc == 12 | ces$faminc == 13, 7, ces$faminc))
+ces$faminc <- (ifelse(ces$faminc == 14 | ces$faminc == 15, 8, ces$faminc))
+ces$faminc <- (ifelse(ces$faminc == 16, 9, ces$faminc))
+
+## Family income
+ces$faminc <- factor(ces$faminc,
+                     levels = 1:9,
+                     labels = c(
+                       "< 10,000", "10,000 - 29,999", "30,000 - 49,999", 
+                       "50,000 - 69,999", "70,000 - 99,999", "100,000 - 149,999", "150,000 - 249,999", 
+                       "250,000 - 499,999", "500,000 or more")
+                     )
+
+
+Lm_faminc <- lm(polengage ~ faminc, data = ces)
+Lm_faminc
+
+
+### Question 2 pt 3 *It would be helpful here to turn the labels back to numerical###
+
+Lm_edinc <- lm (polengage ~ educ + faminc, data = ces)
+Lm_edinc
+
+summary(Lm_edinc)
+                     
 
 ## Part 2
 
@@ -265,6 +302,35 @@ ggplot(ces, aes(polengage)) +
 
 
 cor(ces$faminc, ces$polengage, use = "complete.obs")
+
+
+```
+
+plot(ces$educ, ces$faminc)
+cor(ces$educ, ces$faminc, use = "complete.obs")
+
+confint(Lm_edinc)
+
+
+###Question 2 pt 4  *also back to numerical
+
+##Trying to set party identification to part of a party or not##
+ces$pid3 <- (ifelse(ces$pid3 == 1 | ces$pid3 == 2, 1, 0))
+
+Lm_our <- lm(polengage ~ gender + educ + race + urbancity + faminc + pid3, data = ces)
+Lm_our
+
+summary(Lm_our)
+
+
+###Question 3
+
+Lm_abort <- lm(abortion ~ polengage, data = ces)
+Lm_abort
+summary (Lm_abort)
+
+Lm_min <- lm(minwage ~ polengage, data=ces)
+Lm_min
 
 
 ```
