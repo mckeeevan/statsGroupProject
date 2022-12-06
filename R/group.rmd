@@ -273,7 +273,7 @@ plot(polengage ~ educ,
     data = ces,
     xlab = "Education level",
     ylab = "Number of Political Activities",
-    main = "Figure 4: Impact of Education Level on Political Participation"
+    main = "Figure 2: Impact of Education Level on Political Participation"
 )
 
 abline(lm(polengage ~ educ,
@@ -311,7 +311,7 @@ plot(polengage ~ faminc,
     data = ces,
     xlab = "Family Income",
     ylab = "Number of Political Activities",
-    main = "Figure 2: Impact of Family Income on Political Participation"
+    main = "Figure 4: Impact of Family Income on Political Participation"
 )
 
 abline(lm(polengage ~ faminc,
