@@ -352,10 +352,8 @@ summary(Lm_our)
 
 
 ## Part 3
+t.test(ces$abortion[ces$polengage >= 2],
+       ces$abortion[ces$polengage < 2])
 
-Lm_abort <- lm(abortion ~ polengage, data = ces)
-Lm_abort
-summary(Lm_abort)
-Lm_min <- lm(minwage ~ polengage, data = ces)
-Lm_min
-summary(Lm_min)
+t.test(ces$minwage[ces$polengage >= 2],
+       ces$minwage[ces$polengage < 2])
