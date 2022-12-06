@@ -292,6 +292,11 @@ ces$faminc <- factor(ces$faminc,
 Lm_faminc <- lm(polengage ~ faminc, data = ces)
 Lm_faminc
 
+plot(polengage ~ faminc, data = ces,
+     xlab = "Family Income", 
+     ylab = "Number of Political Activities",
+     main = "Impact of Family Income on Political Participation")   
+
 
 ### Question 2 pt 3 *It would be helpful here to turn the labels back to numerical###
 
