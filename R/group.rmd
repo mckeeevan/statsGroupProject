@@ -274,6 +274,11 @@ ggsave(filename = "hist.jpeg")
 Lm_educ <- lm(polengage ~ educ, data = ces)
 Lm_educ
 
+plot(polengage ~ educ, data = ces,
+     xlab = "Education level", 
+     ylab = "Number of Political Activities",
+     main = "Impact of Education Level on Political Participation")
+
 
 ###Question 2 pt 2
 ces$faminc <- (ifelse(ces$faminc == 2 | ces$faminc == 3, 2, ces$faminc))
@@ -298,14 +303,19 @@ ces$faminc <- factor(ces$faminc,
 Lm_faminc <- lm(polengage ~ faminc, data = ces)
 Lm_faminc
 
+plot(polengage ~ faminc, data = ces,
+     xlab = "Family Income", 
+     ylab = "Number of Political Activities",
+     main = "Impact of Family Income on Political Participation")   
+
 
 ### Question 2 pt 3 *It would be helpful here to turn the labels back to numerical###
 
-Lm_edinc <- lm (polengage ~ educ + faminc, data = ces)
-Lm_edinc
+plot(ces$faminc, ces$educ)
+ces$educ <- as.numeric(ces$educ)
+ces$faminc <- as.numeric(ces$faminc)
+cor(ces$faminc, ces$educ, use = "complete.obs")
 
-summary(Lm_edinc)
-                     
 
 ## Part 2
 
@@ -328,11 +338,11 @@ confint(Lm_edinc)
 ###Question 2 pt 4  *also back to numerical
 
 ##Trying to set party identification to part of a party or not##
-ces$pid3 <- (ifelse(ces$pid3 == 1 | ces$pid3 == 2, 1, 0))
+ces$gender <- (ifelse(ces$gender == 1, 1, 0)) #1 if you are male, 0 if female
+ces$race <- (ifelse(ces$race == 1, 1, 0)) #1 if you are white, 0 if non-white
+ces$pid3 <- (ifelse(ces$pid3 == 1 | ces$pid3 == 2, 1, 0)) #1 if you identify as a member of a political party, 0 if not
 
-Lm_our <- lm(polengage ~ gender + educ + race + urbancity + faminc + pid3, data = ces)
-Lm_our
-
+Lm_our <- lm(polengage ~ gender + educ + race + faminc + pid3, data = ces)
 summary(Lm_our)
 
 
@@ -344,6 +354,4 @@ summary (Lm_abort)
 
 Lm_min <- lm(minwage ~ polengage, data=ces)
 Lm_min
-
-
-```
+summary (Lm_min)
