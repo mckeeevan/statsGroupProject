@@ -275,6 +275,9 @@ plot(polengage ~ educ,
     ylab = "Number of Political Activities",
     main = "Figure 4: Impact of Education Level on Political Participation"
 )
+
+abline(lm(polengage ~ educ,
+    data = ces,),col='red')
 ```
 
 
@@ -311,6 +314,9 @@ plot(polengage ~ faminc,
     main = "Figure 2: Impact of Family Income on Political Participation"
 )
 
+abline(lm(polengage ~ faminc,
+    data = ces,),col='red')
+
 ```
 
 
@@ -325,10 +331,10 @@ cor(ces$faminc, ces$educ, use = "complete.obs")
 ```
 
 
-```{r}
+```{r echo=FALSE, results='asis'}
 
 library(stargazer)
-stargazer(Lm_educ, Lm_faminc)
+stargazer(Lm_educ, Lm_faminc, header=FALSE, type='latex', title="Figure 2: Education and Income")
 
 
 
@@ -346,11 +352,10 @@ summary(Lm_our)
 
 
 ## Part 3
-```{r}
+
 Lm_abort <- lm(abortion ~ polengage, data = ces)
 Lm_abort
 summary(Lm_abort)
 Lm_min <- lm(minwage ~ polengage, data = ces)
 Lm_min
 summary(Lm_min)
-```
