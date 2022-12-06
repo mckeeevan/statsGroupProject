@@ -240,21 +240,32 @@ ces[1:2, ]
 ## Histogram
 ```{r}
 
-
-ggplot(ces, aes(polengage)) +
+ggplot(ces, aes(polengage, y = ..density..)) +
     geom_histogram(color = "#a8a8a8", fill = "#000000", binwidth = 1) +
     labs(
-        title = "Distribution of Political Engagment",
+        title = "Figure 1: Distribution of Political Engagment",
         ## caption = "Source: Gapminder dataset",
         x = "Political Activities",
         y = "Count"
     ) +
     theme_classic() +
     theme(
-        plot.title = element_text(color = "#0099F8", size = 16, face = "bold"),
-        plot.subtitle = element_text(size = 10, face = "bold"),
-        plot.caption = element_text(face = "italic")
+        plot.title = element_text(size = 20, face = "bold"),
+        plot.subtitle = element_text(size = 100, face = "bold"),
+        plot.caption = element_text(face = "italic"),
+     axis.title.x = element_text(size = 20),
+    axis.text.x = element_text(size = 17),
+    axis.text.y = element_text(size = 17),
+    axis.title.y = element_text(size = 20)
     )
+
+```
+
+
+```{r}
+
+ggsave(filename = "hist.jpeg")
+
 ```
 
 ```{r}
@@ -305,6 +316,8 @@ cor(ces$faminc, ces$polengage, use = "complete.obs")
 
 
 ```
+
+```{r}
 
 plot(ces$educ, ces$faminc)
 cor(ces$educ, ces$faminc, use = "complete.obs")
