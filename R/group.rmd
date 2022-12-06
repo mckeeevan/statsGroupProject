@@ -263,6 +263,11 @@ ggplot(ces, aes(polengage)) +
 Lm_educ <- lm(polengage ~ educ, data = ces)
 Lm_educ
 
+plot(polengage ~ educ, data = ces,
+     xlab = "Education level", 
+     ylab = "Number of Political Activities",
+     main = "Impact of Education Level on Political Participation")
+
 
 ###Question 2 pt 2
 ces$faminc <- (ifelse(ces$faminc == 2 | ces$faminc == 3, 2, ces$faminc))
