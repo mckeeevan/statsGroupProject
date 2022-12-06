@@ -227,11 +227,6 @@ ces$work_req <- factor(ces$work_req,
     labels = c("Support", "Oppose")
 )
 
-
-
-
-
-
 ces[1:2, ]
 ```
 
@@ -241,7 +236,7 @@ ces[1:2, ]
 ```{r}
 
 ggplot(ces, aes(polengage, y = ..density..)) +
-    geom_histogram(color = "#a8a8a8", fill = "#000000", binwidth = 1) +
+    geom_histogram(color = "#a8a8a8", fill = "grey", binwidth = 1) +
     labs(
         title = "Figure 1: Distribution of Political Engagment",
         ## caption = "Source: Gapminder dataset",
@@ -253,34 +248,41 @@ ggplot(ces, aes(polengage, y = ..density..)) +
         plot.title = element_text(size = 20, face = "bold"),
         plot.subtitle = element_text(size = 100, face = "bold"),
         plot.caption = element_text(face = "italic"),
-     axis.title.x = element_text(size = 20),
-    axis.text.x = element_text(size = 17),
-    axis.text.y = element_text(size = 17),
-    axis.title.y = element_text(size = 20)
+        axis.title.x = element_text(size = 20),
+        axis.text.x = element_text(size = 17),
+        axis.text.y = element_text(size = 17),
+        axis.title.y = element_text(size = 20)
     )
-
 ```
 
 
 ```{r}
 
 ggsave(filename = "hist.jpeg")
-
 ```
 
+
+
+## Part 2
+### Question 1
 ```{r}
-###Question 2 pt 1
 ## Education
 Lm_educ <- lm(polengage ~ educ, data = ces)
 Lm_educ
+plot(polengage ~ educ,
+    data = ces,
+    xlab = "Education level",
+    ylab = "Number of Political Activities",
+    main = "Figure 4: Impact of Education Level on Political Participation"
+)
+```
 
-plot(polengage ~ educ, data = ces,
-     xlab = "Education level", 
-     ylab = "Number of Political Activities",
-     main = "Impact of Education Level on Political Participation")
 
 
-###Question 2 pt 2
+
+
+### Question 2
+```{r}
 ces$faminc <- (ifelse(ces$faminc == 2 | ces$faminc == 3, 2, ces$faminc))
 ces$faminc <- (ifelse(ces$faminc == 4 | ces$faminc == 5, 3, ces$faminc))
 ces$faminc <- (ifelse(ces$faminc == 6 | ces$faminc == 7, 4, ces$faminc))
@@ -289,69 +291,66 @@ ces$faminc <- (ifelse(ces$faminc == 10 | ces$faminc == 11, 6, ces$faminc))
 ces$faminc <- (ifelse(ces$faminc == 12 | ces$faminc == 13, 7, ces$faminc))
 ces$faminc <- (ifelse(ces$faminc == 14 | ces$faminc == 15, 8, ces$faminc))
 ces$faminc <- (ifelse(ces$faminc == 16, 9, ces$faminc))
-
 ## Family income
 ces$faminc <- factor(ces$faminc,
-                     levels = 1:9,
-                     labels = c(
-                       "< 10,000", "10,000 - 29,999", "30,000 - 49,999", 
-                       "50,000 - 69,999", "70,000 - 99,999", "100,000 - 149,999", "150,000 - 249,999", 
-                       "250,000 - 499,999", "500,000 or more")
-                     )
-
+    levels = 1:9,
+    labels = c(
+        "< 10,000", "10,000 - 29,999", "30,000 - 49,999",
+        "50,000 - 69,999", "70,000 - 99,999", "100,000 - 149,999", "150,000 - 249,999",
+        "250,000 - 499,999", "500,000 or more"
+    )
+)
 
 Lm_faminc <- lm(polengage ~ faminc, data = ces)
 Lm_faminc
 
-plot(polengage ~ faminc, data = ces,
-     xlab = "Family Income", 
-     ylab = "Number of Political Activities",
-     main = "Impact of Family Income on Political Participation")   
+plot(polengage ~ faminc,
+    data = ces,
+    xlab = "Family Income",
+    ylab = "Number of Political Activities",
+    main = "Figure 2: Impact of Family Income on Political Participation"
+)
+
+```
 
 
-### Question 2 pt 3 *It would be helpful here to turn the labels back to numerical###
 
+### Question 3 
+```{r}
+### *It would be helpful here to turn the labels back to numerical###
 plot(ces$faminc, ces$educ)
 ces$educ <- as.numeric(ces$educ)
 ces$faminc <- as.numeric(ces$faminc)
 cor(ces$faminc, ces$educ, use = "complete.obs")
+```
 
-
-## Part 2
 
 ```{r}
 
+library(stargazer)
+stargazer(Lm_educ, Lm_faminc)
 
-cor(ces$faminc, ces$polengage, use = "complete.obs")
 
 
 ```
 
+### Question 4
 ```{r}
-
-plot(ces$educ, ces$faminc)
-cor(ces$educ, ces$faminc, use = "complete.obs")
-
-confint(Lm_edinc)
-
-
-###Question 2 pt 4  *also back to numerical
-
-##Trying to set party identification to part of a party or not##
-ces$gender <- (ifelse(ces$gender == 1, 1, 0)) #1 if you are male, 0 if female
-ces$race <- (ifelse(ces$race == 1, 1, 0)) #1 if you are white, 0 if non-white
-ces$pid3 <- (ifelse(ces$pid3 == 1 | ces$pid3 == 2, 1, 0)) #1 if you identify as a member of a political party, 0 if not
-
+## Trying to set party identification to part of a party or not##
+ces$gender <- (ifelse(ces$gender == 1, 1, 0)) # 1 if you are male, 0 if female
+ces$race <- (ifelse(ces$race == 1, 1, 0)) # 1 if you are white, 0 if non-white
+ces$pid3 <- (ifelse(ces$pid3 == 1 | ces$pid3 == 2, 1, 0)) # 1 if you identify as a member of a political party, 0 if not
 Lm_our <- lm(polengage ~ gender + educ + race + faminc + pid3, data = ces)
 summary(Lm_our)
+```
 
 
-###Question 3
-
+## Part 3
+```{r}
 Lm_abort <- lm(abortion ~ polengage, data = ces)
 Lm_abort
-summary (Lm_abort)
-
-Lm_min <- lm(minwage ~ polengage, data=ces)
+summary(Lm_abort)
+Lm_min <- lm(minwage ~ polengage, data = ces)
 Lm_min
-summary (Lm_min)
+summary(Lm_min)
+```
