@@ -262,6 +262,9 @@ ggplot(ces, aes(polengage, y = ..density..)) +
 ```{r}
 
 ggsave(filename = "hist.jpeg")
+
+
+
 ```
 
 
