@@ -327,7 +327,7 @@ abline(lm(polengage ~ faminc,
 
 ### Question 3 
 ```{r}
-### *It would be helpful here to turn the labels back to numerical###
+
 plot(ces$faminc, ces$educ)
 ces$educ <- as.numeric(ces$educ)
 ces$faminc <- as.numeric(ces$faminc)
@@ -344,6 +344,16 @@ ces$race <- (ifelse(ces$race == 1, 1, 0)) # 1 if you are white, 0 if non-white
 ces$pid3 <- (ifelse(ces$pid3 == 1 | ces$pid3 == 2, 1, 0)) # 1 if you identify as a member of a political party, 0 if not
 Lm_our <- lm(polengage ~ gender + educ + race + faminc + pid3, data = ces)
 summary(Lm_our)
+
+Lm_educr <- lm(polengage ~ educ + race, data = ces)
+Lm_educr
+
+Lm_educg <- lm(polengage ~ educ + gender, data = ces)
+Lm_educg
+
+Lm_educpid <- lm(polengage ~ educ + pid3, data = ces)
+Lm_educpid
+
 ```
 
 ```{r}
