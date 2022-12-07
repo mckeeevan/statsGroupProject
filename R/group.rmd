@@ -392,9 +392,6 @@ colnames(table) <- c("Abortion", "Min Wage")
 
 
 
-
-
-
 ```{r echo=FALSE, results='asis'}
 
 library(stargazer)
