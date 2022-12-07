@@ -235,7 +235,6 @@ ces[1:2, ]
 ```
 
 
-
 ## Histogram
 ```{r}
 
@@ -285,9 +284,6 @@ abline(lm(polengage ~ educ,
 ```
 
 
-
-
-
 ### Question 2
 ```{r}
 ces$faminc <- (ifelse(ces$faminc == 2 | ces$faminc == 3, 2, ces$faminc))
@@ -328,11 +324,15 @@ abline(lm(polengage ~ faminc,
 ### Question 3 
 ```{r}
 
-plot(ces$faminc, ces$educ)
+plot(ces$faminc, ces$educ, xlab="Income", ylab="Education", main = "Figure 3: Correlation", cex=3)
+
+     
 ces$educ <- as.numeric(ces$educ)
 ces$faminc <- as.numeric(ces$faminc)
 cor(ces$faminc, ces$educ, use = "complete.obs")
+
 ```
+
 
 
 
