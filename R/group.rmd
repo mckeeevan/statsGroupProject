@@ -23,6 +23,10 @@ library(ggplot2)
 data <- load("ces.RData")
 
 
+ces$abortionRaw <- ces$abortion
+ces$minwageRaw <- ces$minwage
+
+
 ces$polengage <- ces$voted + ces$meeting + ces$sign +
     ces$campaign + ces$protest + ces$contact + ces$donate
 
@@ -331,14 +335,6 @@ cor(ces$faminc, ces$educ, use = "complete.obs")
 ```
 
 
-```{r echo=FALSE, results='asis'}
-
-library(stargazer)
-stargazer(Lm_educ, Lm_faminc, header=FALSE, type='latex', title="Figure 2: Education and Income")
-
-
-
-```
 
 ### Question 4
 ```{r}
@@ -350,10 +346,54 @@ Lm_our <- lm(polengage ~ gender + educ + race + faminc + pid3, data = ces)
 summary(Lm_our)
 ```
 
+```{r}
 
 ## Part 3
-t.test(ces$abortion[ces$polengage >= 2],
-       ces$abortion[ces$polengage < 2])
 
-t.test(ces$minwage[ces$polengage >= 2],
-       ces$minwage[ces$polengage < 2])
+
+tests <- list()
+
+
+
+tests[[1]] <- t.test(ces$abortionRaw[ces$polengage >= 2],
+       ces$abortionRaw[ces$polengage < 2])
+
+
+
+tests[[2]] <- t.test(ces$minwageRaw[ces$polengage >= 2],
+       ces$minwageRaw[ces$polengage < 2])
+
+
+   table <-    sapply(tests, function(x) {
+     c(x$estimate[1],
+       x$estimate[2],
+       ci.lower = x$conf.int[1],
+       ci.upper = x$conf.int[2],
+       p.value = x$p.value,
+       x$statistic,
+       x$parameter)
+})
+
+
+
+colnames(table) <- c("Abortion", "Min Wage")
+
+```
+
+
+
+
+
+
+```{r echo=FALSE, results='asis'}
+
+library(stargazer)
+
+
+stargazer(Lm_educ, Lm_faminc, header=FALSE, type='latex', title="Figure 2: Education and Income")
+
+
+
+stargazer(table, summary=FALSE, rownames=TRUE, title="T-Tests")
+
+```
