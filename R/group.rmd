@@ -397,7 +397,7 @@ colnames(table) <- c("Abortion", "Min Wage")
 library(stargazer)
 
 
-stargazer(Lm_educ, Lm_faminc, header=FALSE, type='latex', title="Figure 2: Education and Income")
+stargazer(Lm_educ, Lm_faminc, header=FALSE, type='latex', title="Education and Income")
 
 
 
